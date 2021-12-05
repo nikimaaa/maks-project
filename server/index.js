@@ -1,10 +1,19 @@
 const Koa = require('koa');
 const app = new Koa();
 const process = require('process');
-const User = require('./models/user_model')
 const mongoose = require('mongoose');
 const userRouter = require('./routes/user_route')
 const bodyParser = require('koa-bodyparser');
+
+app.use(bodyParser());
+
+app.use(async(ctx, next)=>{
+    await next();
+})
+
+
+app.use(userRouter);
+
 
 const connect = async ()=>{
     try{
@@ -15,21 +24,6 @@ const connect = async ()=>{
         process.exit(1);
     }
 }
-app.use(bodyParser());
-app.use(userRouter);
-// const create = async () =>{
-//     await User.create(
-//         {
-//             name: 'String',
-//             password: 'String',
-//             avatar: 'String',
-//             age: 1 ,
-//             desc: 'String',
-//             iswhite: true
-//         }
-//     )
-// }
+
 
 connect();
-//create();
-

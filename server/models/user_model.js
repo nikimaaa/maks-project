@@ -5,6 +5,6 @@ const schema = new Schema({
     avatar: String,
     age: Number,
     desc: String,
-    iswhite: Boolean
+    iswhite: String
 });
 module.exports = model("User", schema);

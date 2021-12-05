@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="App">
 
-     <CreateUser/>
-     <UserList users={users}/>
+     <CreateUser setUsers={setUsers} users={users}/>
+     <UserList users={users} setUsers={setUsers}/>
     </div>
   );
 }
