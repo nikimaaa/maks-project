@@ -2,17 +2,27 @@ import UserList from './components/UserList/UserList'
 import CreateUser from './components/CreateUser/CreateUser'
 import {useState} from 'react'
 import {useEffect} from 'react'
+import {BrowserRouter, Routes, Route, Link, Redirect} from 'react-router-dom'
+import User from './pages/User/User'
+import Users from './pages/Users/Users'
+
 function App() {
-  const [users, setUsers] = useState([])
-  useEffect(async ()=>{
-    const response = await fetch('/api/user', {method: 'GET'});
-    setUsers(await response.json());
-  }, [])
+
   return (
     <div className="App">
+ 
+      <BrowserRouter>
+     <Link to="/user">User</Link>
+      <Link to="/">Users</Link>
+      <Routes>
+        <Route path="/user/:id" element={<User/>}/>
+        <Route path="/*" element={<div>404</div>}/>
+        <Route path="/" element={<Users/>}/>
+       
+      </Routes>
 
-     <CreateUser setUsers={setUsers} users={users}/>
-     <UserList users={users} setUsers={setUsers}/>
+      </BrowserRouter>
+
     </div>
   );
 }

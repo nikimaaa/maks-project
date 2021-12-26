@@ -22,3 +22,10 @@
 .user_charact {
     margin-right: 10px;
 }
+.filters {
+    display: flex;
+    justify-content: center;
+}
+.filters input {
+    margin: 20px 20px 0 20px;
+}

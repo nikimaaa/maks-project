@@ -5,7 +5,7 @@ class UserService{
         return users;
     }
     async getbyId(id){
-        const user = await User.find({_id: id});
+        const user = await User.findOne({_id: id});
         return user;
     }
     async createOne(userOptions){
